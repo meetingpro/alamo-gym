@@ -13,13 +13,12 @@ header .headerLogo {
 
 #orgHeader {
   border: none;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(249, 249, 249);
   padding: 0;
 }
 
 #orgHeader .cus-cont.cus-cont__header-nav_wrapper {
-  width: 85%;
-  margin: auto;
+  width: 100%;
   padding: 0;
 }
 
@@ -30,54 +29,12 @@ header .headerLogo {
 }
 
 #orgHeader .headerLogo {
-  display: block;
-  width: 20%;
-  float: left;
-  margin-left: 0;
-  padding: 1.25% 0;
+  display: none;
+  width: 0%;
 }
 
 #orgHeader .headerLogo img {
-  height: auto;
-  width: 100%;
-}
-
-@media screen and (min-width: 1145px) and (max-width: 1300px) {
-  #orgHeader .cus-cont.cus-cont__header-nav_wrapper {
-    width: 975px;
-  }
-  #orgHeader .headerLogo img {
-    width: 80%;
-  }
-  .orgNavStUl {
-    margin-top: 28px;
-  }
-}
-
-@media screen and (min-width: 1301px) and (max-width: 1450px) {
-  #orgHeader .cus-cont.cus-cont__header-nav_wrapper {
-    width: 1200px;
-  }
-  #orgHeader .headerLogo img {
-    width: 70%;
-    margin-left: 35%;
-  }
-  .orgNavStUl {
-    margin-top: 34px;
-  }
-}
-
-@media screen and (min-width: 1451px) {
-  #orgHeader .cus-cont.cus-cont__header-nav_wrapper {
-    width: 1325px;
-  }
-  #orgHeader .headerLogo img {
-    width: 63%;
-    margin-left: 47%;
-  }
-  .orgNavStUl {
-    margin-top: 35px;
-  }
+  display: none;
 }
 
 /* header navigation */
@@ -87,27 +44,39 @@ header .headerLogo {
 }
 
 .cusCont__orgNav {
-  display: block;
-  width: 80%;
-  float: left;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #222;
+}
+
+.orgNav::after {
+  display: table;
+  clear: both;
+  content: '';
 }
 
 .orgNav ul {
-  text-align: center;
-  padding: 0;
+  text-align: left;
+}
+
+.orgNav .orgNavStUl {
   margin-bottom: 0;
 }
 
 .orgNav li {
   display: inline-block;
   position: relative;
-  padding: 8px 12px;
+  line-height: 24px;
   transition: background-color 0.2s linear;
-  border-radius: 4px;
 }
 
 .orgNav li:hover {
-  background-color: #f80000;
+  background-color: #fff;
+}
+
+.orgNav li:hover a {
+  color: #000;
 }
 
 .orgNav li a {
@@ -116,28 +85,28 @@ header .headerLogo {
   font-size: 16px;
   font-weight: normal;
   font-family: 'Open Sans', sans-serif;
-  padding: 0;
+  padding: 12px 20px;
   margin: 0;
-  text-shadow: rgb(0, 0, 0) 1px 1px 1px;
-  letter-spacing: 2px;
 }
 
 .orgNav li .orgSubNav {
   display: none;
-  background: rgba(0, 0, 0, 1);
-  right: 0;
-  border-radius: 4px;
+  background: #fff;
+  padding: 0;
 }
 
 .orgNav .orgNavStUl li:hover .orgSubNav {
   display: block;
   position: absolute;
   text-align: left;
-  margin-top: 8px;
+  margin-top: 0;
+  top: 44px;
+  left: 0;
 }
 
 .orgNav .orgNavStUl li:hover .orgSubNav li {
   display: block;
+  width: 250px;
 }
 
 .orgNav .orgNavStUl li .orgSubNav li .orgSubNav {
@@ -154,10 +123,17 @@ header .headerLogo {
 }
 
 .orgNav .orgNavStUl li .orgSubNav li a {
-  font-size: 16px;
-  padding: 5px;
-  width: 200px;
-  display: inline-block;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.orgNav .orgNavStUl li .orgSubNav li:hover {
+  background-color: #000;
+  border: 1px solid #fff;
+}
+
+.orgNav .orgNavStUl li .orgSubNav li:hover a {
+  color: #fff;
 }
 
 .orgNav .orgNavStUl li .orgSubNav.orgSubNav__3d {
@@ -191,12 +167,6 @@ header .headerLogo {
 @media screen and (max-width: 1145px) {
   #orgHeader {
     padding-left: 0;
-  }
-  #orgHeader .headerLogo {
-    padding: 0;
-    padding-left: 25px;
-    width: 165px;
-    margin-top: 12px;
   }
   #orgHeader .cusCont__orgMNavBar {
     display: block;
@@ -279,20 +249,21 @@ header .headerLogo {
 /* text header */
 
 .textHeader {
-  padding: 10px 30px;
+  padding: 25px 45px;
   font-family: 'Open Sans', sans-serif;
-}
-
-.cusHostHotelInfo img {
-  width: 225px;
+  background-image: url('//static.reservetravel.com/appSkins/41158/v6/themes/new/images/agctest-gradient.jpg');
+  width: 90%;
+  margin: 28px;
+  background-position: -3px -3px;
+  color: #fff;
 }
 
 .textHeader h4:last-child {
-  color: #1f6ed4;
-  background: #f1d374;
-  width: 270px;
+  color: #fff;
+  background: #222;
+  width: 290px;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 10px;
   border: 1px solid;
   border-radius: 2px;
   font-weight: bold;
@@ -300,11 +271,44 @@ header .headerLogo {
 
 @media screen and (min-width: 1144px) {
   .cusHostHotelInfo img {
-    width: 275px;
+    width: 225px;
     position: absolute;
     left: 850px;
     margin-top: 45px;
   }
+}
+
+.cusHostHotelInfo h4 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.cusHostHotelInfo h5 {
+  line-height: 25px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.cusHostHotelInfo h5 a {
+  color: #ff4c7c;
+  display: inline-block;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 25px;
+  font-size: 14px;
+  border-radius: 22px;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.cusHostHotelInfo h6 {
+  font-size: 13px;
+}
+
+.cusHostHotelInfo h6:last-of-type {
+  margin-bottom: 20px;
 }
 
 .textHeader .cusHostHotelInfo p {
@@ -314,16 +318,18 @@ header .headerLogo {
 /* results loaded body */
 
 .SearchHotels #searchForm .ArnPrimarySearchOuterContainer {
-  background-color: #616161;
+  background-image: url('//static.reservetravel.com/appSkins/41158/v6/themes/new/images/agctest-gradient.jpg');
+  background-position: -3px -3px;
 }
 
 #searchForm .ArnQuadSearchContainer.ArnPrimarySearchContainer {
-  background-color: #616161;
+  background-image: url('//static.reservetravel.com/appSkins/41158/v6/themes/new/images/agctest-gradient.jpg');
+  background-position: -3px -3px;
 }
 
 #searchForm #theSubmitButton,
 #searchForm #theOtherSubmitButton {
-  background-color: #f80000;
+  background-color: #222;
 }
 
 /* landing page search form overrides */
