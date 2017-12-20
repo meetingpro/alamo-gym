@@ -1,8 +1,10 @@
 <script type="text/javascript">
   var checkInCus = document.getElementById('theCheckIn');
   var checkOutCus = document.getElementById('theCheckOut');
+  /*
   checkInCus.value = '';
   checkOutCus.value = '';
+  */
 
   function checkCusClick() {
     var filter = document.getElementsByClassName('refine')[0];
@@ -37,9 +39,9 @@
   textHeaderTitle.innerText = 'Host Hotel Info';
   var textHeaderCont = document.createElement('div');
   textHeaderCont.innerHTML =
-    "<div class='cusHostHotelInfo'><img src='/appSkins/41158/v6/themes/new/images/host_hotel_raw.jpg' alt='Embassy Suites By Hilton, Denton TX'><h4>Embassy Suites by Hilton (NEW HOTEL IN DENTON!)</h4><p>3100 Town Center Trail Denton, Texas 76201</p> <p>940-243-3799</p><p>FREE made to order Breakfast</p><p>FREE nightly evening reception</p><p>Ask for the Friends of Achievers Special Invite Rate, $139!</p><p>Reservation must be made by Wed, December 13th, 2017</p><p>11 miles to competition venue</p></div><h4>Book Additional Hotels Below</h4>";
+    "<div class='cusHostHotelInfo'><img src='/appSkins/41158/v6/themes/new/images/alamo_gym_logo.png' alt='Embassy Suites By Hilton, Denton TX'><h4>Partnering with Wyndham Garden Riverwalk </h4><h5>$129 per night for standard king size bed<br/><a href='https://www.wyndhamhotels.com/groups/gn/alamo-san-antonio-gymnastics'>Book Here</a></h5><h6>*deadline to get event rate is Jan 26, 2017 and are subject to availability.</h6><h6>Free parking on 9th street adjacent to hotel</h6><h6>Valet Parking $24.00 per day</h6><h6>Self Park $18 per day</h6></div><h4>Book Additional Hotels Below</h4>";
 
-  textHeader.appendChild(textHeaderTitle);
+  // textHeader.appendChild(textHeaderTitle);
   textHeader.appendChild(textHeaderCont);
 
   var viewCheckLanding = document.getElementsByClassName('landingBottomContent');
@@ -70,6 +72,8 @@
   }
   cusMToggle.addEventListener('click', toggleCusMNav);
 </script>
+
+<!-- custom location text
 <script>
   var hotelsSearch = document.querySelector('#theBody.SearchHotels');
   if (hotelsSearch) {
@@ -92,14 +96,33 @@
     newResultsMsg();
   }
 </script>
+-->
 
 <script>
-  var landingURL =
-    "https://www.reservetravel.com/v6/?siteid=41158&theme=new&type=geo&longitude=-97.023785&latitude=33.134506&checkIn=01/12/2018&nights=2&currency=USD&locationLabel=501%20Swisher%20Rd,%20Lake%20Dallas,%20TX%2075065&radius=15";
-  if (window.location.href === landingURL) {
-    var checkIn = '01/12/2018';
-    var checkOut = '01/14/2018';
-    document.getElementById('theCheckIn').value = checkIn;
-    document.getElementById('theCheckOut').value = checkOut;
+  if (window.location.href.indexOf('checkIn=') >= 0) {
+    var cusCheckInStart = window.location.href.indexOf('checkIn=') + 8;
+    var cusDatesTestChar = window.location.href[cusCheckInStart + 10];
+    if (cusDatesTestChar === '&') {
+      var cusCheckInDate = window.location.href.substring(cusCheckInStart, cusCheckInStart + 10);
+      document.getElementById('theCheckIn').setValue(cusCheckInDate);
+      if (window.location.href.indexOf('nights=') >= 0) {
+        var stayNightsIndex = window.location.href.indexOf('nights=') + 7;
+        var stayNights = window.location.href.substring(stayNightsIndex, stayNightsIndex + 1);
+        var lastSlashIndex =
+          cusCheckInDate
+          .split('')
+          .slice(3)
+          .indexOf('/') + 3;
+        var cusCheckOutDay = parseInt(cusCheckInDate.substring(3, lastSlashIndex)) + parseInt(stayNights);
+        if (cusCheckOutDay < 10) {
+          cusCheckOutDay = '0' + cusCheckOutDay.toString();
+        }
+        var cusCheckOutSplit = [];
+        cusCheckOutSplit.push(cusCheckInDate.substring(0, 3));
+        cusCheckOutSplit.push(cusCheckOutDay);
+        cusCheckOutSplit.push(cusCheckInDate.substring(lastSlashIndex));
+        document.getElementById('theCheckOut').setValue(cusCheckOutSplit.join(''));
+      }
+    }
   }
 </script>
