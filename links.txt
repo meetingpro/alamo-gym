@@ -1,0 +1,7 @@
+-- base:
+
+http://www.reservetravel.com/v6/?siteid=41158&theme=new
+
+-- working 1: geo, working label
+
+http://www.reservetravel.com/v6/?siteid=41158&theme=new&type=geo&longitude=-98.494236&latitude=29.385956&nights=2&checkIn=02/09/2018&radius=8&locationLabel=San%20Antonio%20Invitational&currency=USD
