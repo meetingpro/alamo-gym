@@ -272,8 +272,6 @@ header .headerLogo {
 @media screen and (min-width: 1144px) {
   .cusHostHotelInfo img {
     width: 225px;
-    position: absolute;
-    left: 850px;
     margin-top: 45px;
   }
 }
